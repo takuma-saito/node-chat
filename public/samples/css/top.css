@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+/* main image */
+#main_image {
+    height: 400px;
+    width: 900px;
+    margin-left: 120px;
+}
+
+/* contents */
+#contents {
+    margin: 10px 0;
+}
+
+/* info */
+#info {
+    float: left;
+    width: 520px;
+    height: 530px;
+    background: url("../image/top/info_bg.png") 0 0 no-repeat;
+    position: relative;
+}
+
+#info h2 {
+    position: absolute;
+    top: 30px;
+    left: 135px;
+}
+
+#info .inner {
+    position: absolute;
+    top: 75px;
+    left: 135px;
+    width: 355px;
+}
+
+#info .inner table {
+    background-color: #ddd;
+}
+
+#info table th {
+    vertical-align: top;
+    font-size: 85%;
+    color: #666;
+    font-weight: normal;
+}
+
+#info table td a {
+    font-size: 95%;
+    color: #000;
+}
+
+#info table tr {
+    border-bottom: dotted 1px #999;
+}
+
+#info table td,
+#info table th {
+    padding: 10px;
+}
+
+#info .more {
+    width: 100%;
+    text-align: right;
+    margin-top: 12px;
+}
+
+#info .more a {
+    padding-right: 20px;
+}
+
+/* block */
+#block {
+    float: right;
+    width: 480px;
+    height: 400px;
+    background: #ccc;
+}

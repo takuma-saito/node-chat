@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+#wrapper {
+    width: 900px;
+}
+
+#header {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#main {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+#main .inner {
+    background: url("../image/structure/main_middle.png") 0 0 repeat-y;
+    padding: 0 20px;
+}
+
+#main .inner .photo {
+    float: left;
+    width: 400px;
+    position: relative;
+}
+
+#main .inner {
+    position: relative;
+    height: 900px;
+}
+
+#main .inner .explain {
+    float: right;
+    width: 430px;
+}
+
+#main .inner h2 {
+    position: absolute;
+    top: 5px;
+    right: 1px;
+}
+
+#main .inner .explain {
+    padding: 60px 5px 0 5px;
+    color: #333;
+}
+
+#main .explain h3 {
+    border-bottom: solid 2px #333;
+    font-weight: normal;
+    padding: 0 0 5px 0;
+    margin-bottom: 20px;
+    font-size: 120%;
+}
+
+#main .explain .block {
+    margin-bottom: 30px;
+}
+
+/* モジュール */
+table.tb_stripe {
+    color: #333;
+}
+
+table.tb_stripe th {
+    background-color: #eee;
+    color: #333;
+}
+
+table.tb_stripe th,
+table.tb_stripe td {
+    border: solid 1px #ddd;
+    padding: 5px;
+}
+
+.big_photo img {
+    position: absolute;
+    top: 5px;
+    left: -185px;
+}
+
+.contact_photo {
+    margin-top: 20px;
+}
+
+/* 各個別ページごと*/
+
+/* 経営理念 */
+.vision #main .inner {
+    height: 1000px;
+}
+
+.vision .photo {
+    position: relative;
+}
+
+.vision .photo .photo1 {
+    position: absolute;
+    top: 50px;
+    left: -27px;
+}
+
+.vision .photo .photo2 {
+    position: absolute;
+    top: 370px;
+    left: 74px;
+}
+
+.vision .photo .photo3 {
+    position: absolute;
+    top: 690px;
+    left: -27px;
+}
+
+/* 会社概要 */
+
+.company .tb_stripe {
+    margin: 50px 0 20px 30px;
+    width: 550px;
+}
+
+.company .map {
+    margin-left: 30px;
+}
+
+/* お問い合わせ */
+.contact .form th {
+    font-size: 85%;
+    text-align: left;
+}
+
+.contact .submit {
+    padding: 10px;
+    text-align: center;
+}
+
+.contact .text {
+    padding: 3px;
+}
+
+/* 個別ページ */
+.single #main {
+    color: #000;
+}
+
+.single #main .inner {
+    padding-top: 20px;
+}
+
+.single #main .inner h2 {
+    position: static;
+    border-left: solid 5px blue;
+    border-bottom: dotted 1px #0065ff;
+    padding: 5px 0 3px 15px;
+    font-size: 120%;
+}
+
+.single #main .inner {
+    height: auto;
+    min-height: 250px;
+    padding: 8px 20px 20px;
+}
+
+.single #main .inner .contents {
+    margin-top: 20px;
+}

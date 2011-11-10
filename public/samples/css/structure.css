@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+/* wrapper */
+#wrapper {
+    margin: 0 auto;
+    width: 1020px;
+}
+
+/* module */
+
+a.link {
+    font-size: 85%;
+    color: blue;
+    font-weight: bold;
+    padding-left: 16px;
+    background: url("../image/structure/icon1.png") 0 0 no-repeat;
+}
+
+a.link:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+/* header */
+#header {
+    height: 70px;
+    width: 900px;
+    margin: 0 0 15px 120px;
+    position: relative;
+}
+
+#header .logo {
+    position: absolute;
+    top: 25px;
+    left: 5px;
+}
+
+#header .header_menu {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+}
+
+#header .header_menu li {
+    float: left;
+    margin-left: 8px;
+}
+
+#header .contact {
+    position: absolute;
+    top: 15px;
+    right: 50px;
+}
+
+/* footer */
+#footer {
+    width: 100%;
+    height: 80px;
+    position: relative;
+    border-top: dotted 2px #333;
+}
+
+#footer ul {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+#footer ul li {
+    float: left;
+    padding: 0 15px 0 15px;
+    border-left: solid 1px #000;
+    line-height: 1.2;
+}
+
+#footer .logo {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+#footer a {
+    font-weight: bold;
+    color: #333;
+}
+
+#footer a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+#footer address {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 80%;
+}
+
+
+
+
