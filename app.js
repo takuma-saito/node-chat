@@ -22,7 +22,7 @@ module.exports = (function() {
     var publicHtmlDir = './public/'; // 静的ファイルを格納するディレクトリ
     const DEFAULT_ENCODING = 'UTF-8'; // デフォルトのエンコーディング
     const DEFAULT_PAGE = 'index.html'; // デフォルトのページ
-    const NOT_FOUND_FORMAT = '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL %s was not found on this server.</p><hr><address>Takuma\'s Server at %s Port %d</address></body></html>';   // 対応するページがない場合に表示
+    const NOT_FOUND_FORMAT = '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>404 Not Found</title></head><body><h1>Not Found   (^_^;)</h1><p>The requested URL %s was not found on this server.</p><hr><address>Takuma\'s Server at %s Port %d</address></body></html>';   // 対応するページがない場合に表示
 
     // パスとイベントの対応関係を保持
     var map = {};
@@ -78,8 +78,8 @@ module.exports = (function() {
     // (setText, setJSON..etc) を呼び出す
     function requestHandler(req, res) {
         var pathname = req.pathname;
-        var handler = map[path];
-
+        var handler = map[pathname];
+        
         console.log("loaded .. " + pathname);
         if (!handler) {
             pathToFileHandler(pathname);
@@ -108,8 +108,8 @@ module.exports = (function() {
     }
 
     function setReqParam() {
-        this.params = qs.parse(url.parse(this.url)).query;
-        this.pathname = url.parse(this.url).pathname;
+        this.params = qs.parse(url.parse(this.url).query);        
+        this.pathname = url.parse(this.url).pathname; 
     }
     
     // ヘッダーとボディを設定する
@@ -128,6 +128,12 @@ module.exports = (function() {
             };
             setHeaderBody.call(this, body, content, type);
         };
+        this.setHtml = function(body, type) {
+            var content = {
+                "Content-Type": "text/html",
+                "Content-Length": body.length
+            };
+        };
         this.setJSON = function(obj, type) {
             var body = new Buffer(JSON.stringify(obj));
             var content = {
@@ -136,8 +142,11 @@ module.exports = (function() {
             };
             setHeaderBody.call(this, body, content, type);
         };
+        this.empty = function() {
+            this.setBody('');
+        };
         this.setText = this.setBody;
-    }    
+    };
 
     httpd.on('request', function(req, res){
         setReqParam.call(req);
@@ -169,4 +178,3 @@ module.exports = (function() {
         }
     };
 })();
-

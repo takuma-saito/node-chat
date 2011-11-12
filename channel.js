@@ -10,52 +10,55 @@ module.exports = (function(){
 
     const JOIN_MSG = 'JOIN: ';
     const PART_MSG = 'PART: ';
+
+    // 変数
+    var _callbacks = {};
     
     var memberTable = {
         members: [],
-        get: function(nick) {
+        get: function(username) {
             var ms = this.members;
             for (var i in ms) {
-                if (ms[i] == nick) {
+                if (ms[i] == username) {
                     return ms[i];
                 }
             };
             return null;
         },        
-        exist: function(nick) {
-            if (this.get(nick)) return true;
+        exist: function(username) {
+            if (this.get(username)) return true;
             return false;
         },
-        del: function(nick) {
+        del: function(username) {
             var ms = this.members;
             for (var i in ms) {
-                if (ms[i] == nick) {
+                if (ms[i] == username) {
                     delete ms[i];
                     return;
                 }
             };
         },
-        add: function(nick) {
-            this.members.push(nick);
+        add: function(username) {
+            this.members.push(username);
         }
     };
 
-    function action(nick, type, text) {        
+    function action(username, type, entry) {        
         msg = {
-            nick:  nick,
+            username:  username,
             type: type,
-            text: text,
+            entry: entry,
             timestamp: (new Date()).getTime()
         };
-        util.puts(nick + ':' + type + '\t\t"' + text + '"');
+        util.puts(username + ':' + type + '\t\t"' + entry + '"');
         switch(type) {
           case 'msg':
             break;
           case 'join':
-            memberTable.add(nick);
+            memberTable.add(username);
             break;
           case 'part':
-            memberTable.del(nick);
+            memberTable.del(username);
             break;
         default:
             throw 'invalid type';
@@ -68,23 +71,43 @@ module.exports = (function(){
     return {
         history: [],
         
-        join: function(nick) {
-            action.call(this, nick, 'join', JOIN_MSG + nick); 
+        join: function(username) {
+            action.call(this, username, 'join', JOIN_MSG + username); 
         },
 
-        msg: function(nick, text) {
-            action.call(this, nick, 'msg', text);
+        msg: function(username, entry) {
+            action.call(this, username, 'msg', entry);
+            this.emit('recv', username, entry); // recvイベントを登録            
         },
         
-        part: function(nick) {
-            action.call(this, nick, 'part', PART_MSG + nick);
+        part: function(username) {
+            action.call(this, username, 'part', PART_MSG + username);
         },
 
-        exist: function(nick) {
-            return memberTable.exist(nick);            
+        exist: function(username) {
+            return memberTable.exist(username);            
         },
 
-        members: memberTable.members
+        members: memberTable.members,
+
+        on: function(name, callback) {
+            if (!_callbacks[name]) {
+                _callbacks[name] = [callback];   
+            }
+            else {
+                _callbacks[name].push(callback);
+            }
+        },
+
+        emit: function(name) {
+            var args = Array.prototype.slice.apply(arguments);
+            args.shift();
+            if (_callbacks[name]) {
+                for (var i = 0; i < _callbacks[name].length; i++) {
+                    _callbacks[name][i].apply(this, args);
+                }
+            }
+        }
     };
 })();
 

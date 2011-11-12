@@ -7,35 +7,21 @@
     <title>チャットアプリケーション</title>
   </head>
   <body>
+    <h1>チャットアプリケーション</h1>
     <div id="login">
-      <h1>チャットアプリケーション</h1>
-      <div id="msg">
-        nodejs + mongoDB で作成したオリジナルチャットアプリケーションです！
-      </div>
-      <input type="input" name="username" />
-      <input type="submit" name="submit" class="submit" />
+      <p class="explain">
+        nodejs + mongoDB で作成したチャットアプリケーションです！
+      </p>
+      <span class="user_msg">名前を入力して下さい：</span><input type="input" name="username" id="username" class="text" />
     </div>
     <div id="chat_main">
-      <table>
-          <tr>
-              <th>
-                Takuma
-              </th>
-              <td>
-                おはようございます。
-              </td>
-          </tr>
-          <tr>
-              <th>
-                Teru
-              </th>
-              <td>
-                こんにちは
-              </td>
-          </tr>
+      <p class="explain">
+        好きなメッセージを入力して下さい！
+      </p>
+      <table id="chat_history">
       </table>
-      <div class="user">
-        <input type="input" name="msg" />
+      <div id="toolbar">
+        <input type="input" name="msg" id="entry" class="text" />
       </div>
     </div>
   </body>

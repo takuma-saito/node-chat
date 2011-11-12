@@ -1,4 +1,53 @@
 @charset "UTF-8";
 
+body {
+  margin: 20px auto 0;
+  width: 920px;
+  line-height: 1.8;
+}
 
+h1 {
+  border-left: solid 5px #ff5900;
+  border-bottom: dotted 1px #ff955e;
+  padding: 0 0 5px 20px;
+  font-size: 120%;
+}
+
+.explain {
+  color: #666;
+}
+
+.user_msg {
+  font-weight: bold;
+}
+
+input.text {
+  padding: 8px;
+  border: solid 2px #ccc;
+  font-size: 130%;
+}
+
+/* toolbar */
+#toolbar {
+  position: fixed;
+  bottom: 0;
+  height: 80px;
+  width: 920px;
+  background-color: #fff;
+  padding-top: 25px;
+}
+
+#toolbar #entry {
+  width: 100%;
+}
+
+#chat_history {
+  font-size: 115%;
+  padding-bottom: 105px;
+}
+
+#chat_history th {
+  padding-right: 15px;
+  text-align: left;
+}
 
