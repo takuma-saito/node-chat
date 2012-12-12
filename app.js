@@ -31,7 +31,7 @@ module.exports = (function() {
     var httpd = http.createServer();
 
     // 404 Not Found
-    function notFound(req, res) {
+v    function notFound(req, res) {
         res.writeHead(404, {
             "Content-Type": "text/html; charset=iso-8859-1",
             "Conetnt-Length": NOT_FOUND_FORMAT.length
@@ -159,7 +159,6 @@ module.exports = (function() {
         get: function(path, handler) {
             map[path] = handler;
         },
-
         listen: function(port, host) {
             _port = port;
             _host = host;
@@ -168,11 +167,9 @@ module.exports = (function() {
                       (host || "localhost") +
                       ":" + port.toString() + "/");
         },
-
         close: function() {
             httpd.close();
         },
-
         setPublicHtml: function(dir) {
             publicHtmlDir = dir;
         }

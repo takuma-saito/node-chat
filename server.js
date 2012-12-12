@@ -19,6 +19,7 @@ app.get('/members', function(req, res) {
 // チャットに参加する
 app.get('/join', function(req, res){
     var username = req.params.username;
+    var id = req.params.id;
     channel.join(username);
     channel.msg(username, "[入室]");
     res.setJSON({username: username, id: id});
